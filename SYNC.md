@@ -2,14 +2,18 @@
 
 在 Obsidian 里编辑完笔记后，将更新同步到 GitHub：
 
-## 快速同步（一行命令）
+## 一键同步（推荐）
 
 ```bash
 cd /Users/a58/Desktop/llm-wiki
-cp -r "/Users/a58/Documents/Obsidian Vault/llm-wiki" wiki.new && rm -rf wiki && mv wiki.new wiki
-git add wiki CLAUDE.md
-git commit -m "docs: update wiki notes from Obsidian"
-git push origin main
+./sync.sh
+```
+
+脚本自动完成：复制 → 检测变更 → 提交 → 推送 → 恢复 symlink。无变更时跳过。
+
+自定义 commit message：
+```bash
+./sync.sh "docs: add claude-code-memory series"
 ```
 
 ## 分步操作
